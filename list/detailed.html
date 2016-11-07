@@ -1,0 +1,22 @@
+<!--电影的图片-->
+<img ng-src={{movie.images.large}} style="float: left;padding-right:30px; ">
+<!--电影名-->
+<h1><b>{{movie.title}}</b></h1>
+<!--豆瓣评分-->
+<span>豆瓣评分:</span><span style="color:red">{{movie.rating.average}}</span>
+<!--导演名-->
+&nbsp;&nbsp;&nbsp;<span>导演: </span>
+<a style="color: green;text-decoration: none;font-weight: 600;" ng-repeat="director in movie.directors">{{director.name}}{{$last?'':'、'}}</a>
+<!--属于哪个地区-->
+&nbsp;&nbsp;&nbsp;<span>国家/地区: </span>
+<span ng-repeat="country in movie.countries">{{country}}{{$last?'':'/'}}</span>
+<!--主演名-->
+<p style="margin-top: 10px;"><span>主演: </span> <span style="color: green;font-weight: 600;" ng-repeat="cast in movie.casts">{{cast.name}}{{$last?'':' '}}</span></p>
+<!--电影简介-->
+<p style="line-height: 2em;">{{movie.summary}}</p>
+<div class="wrap" ng-hide="movie">
+    <div class="spinner">
+        <div class="cube1"></div>
+        <div class="cube2"></div>
+    </div>
+</div>

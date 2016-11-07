@@ -1,0 +1,33 @@
+<h1 class="page-header">{{title}}</h1>
+<div class="list-group">
+    <a ng-repeat="movie in subjects track by $index" href=#/subject/{{movie.id}} class="list-group-item">
+     <span class="badge">{{movie.rating.average}}</span>
+        <div class="media">
+            <div class="media-left" href="#">
+                <img ng-src={{movie.images.small}}>
+            </div>
+            <div class="media-body">
+                <h4 class="media-heading">{{movie.title}}</h4>
+                <p>导演:<span ng-repeat="director in movie.directors track by $index">{{director.name}} {{$last?'':'、'}}</span></p>
+                <p>类型:{{movie.genres.join('、')}}</p>
+            </div>
+        </div>
+    </a>
+    <div ng-show="subjects.length">
+        <p>总共{{total}}条电影,共{{totalPage}}页</p>
+        <div style="text-align: center">
+            <!--<ul class="pagination pager">-->
+                <!--<li ng-class="{disabled :currentPage==1}" ng-disabled="currentPage==1"><a ng-click="hundlePage(currentPage-1)">上一页</a></li>-->
+                <!--&lt;!&ndash;<li ng>{{value}}</li>&ndash;&gt;-->
+                <!--<li ng-class="{disabled :currentPage==totalPage}" ng-disabled="currentPage==totalPage"><a ng-click="hundlePage(currentPage+1)">下一页</a></li>-->
+            <!--</ul>-->
+            <page pageInformation="pageInformation"></page>
+        </div>
+    </div>
+</div>
+<div class="wrap" ng-hide="subjects.length">
+    <div class="spinner">
+        <div class="cube1"></div>
+        <div class="cube2"></div>
+    </div>
+</div>
